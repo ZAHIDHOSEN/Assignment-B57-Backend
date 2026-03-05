@@ -1,6 +1,8 @@
 import express from "express"
 import cors from "cors"
 import { AuthRouter } from "./module/auth/auth.route"
+import { BlogRoute } from "./module/blog/blog.route"
+import { ProjectRoute } from "./module/project/project.route"
 
 
 
@@ -15,7 +17,10 @@ app.use(
     })
 )
 
-app.use("api/v1/auth",AuthRouter)
+app.use("/api/v1/auth",AuthRouter)
+app.use("/api/v1/blog",BlogRoute)
+app.use("/api/v1/project",ProjectRoute)
+
 
 
 
