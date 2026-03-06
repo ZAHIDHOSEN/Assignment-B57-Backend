@@ -36,6 +36,28 @@ const createBlog = async(payload:ICreateBlog) =>{
 }
 
 
+const getAllBlog = async()=>{
+   const result = await prisma.blog.findMany({
+    include:{
+        author:true
+    }
+   })
+
+   return result 
+
+}
+
+const blogDetails = async(id:string)=>{
+  const result = await prisma.blog.findUnique({
+    where:{id},
+    include:{
+        author:true
+    }
+  })
+  return result
+
+}
+
 
 const updateBlog = async(id:string,blog:IUpdateBlog) =>{
    
@@ -73,6 +95,8 @@ const deleteBlog = async(id:string) =>{
 
 export const BlogServices = {
    createBlog,
+   getAllBlog,
+   blogDetails,
    updateBlog,
    deleteBlog
 }

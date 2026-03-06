@@ -46,6 +46,30 @@ const createProject = async(project:ICreateProject) =>{
 }
 
 
+const getAllProject = async()=>{
+    
+    const result = await prisma.project.findMany({
+        include:{
+            author:true
+        }
+    })
+
+    return result
+}
+
+const ProjectDetails = async(id:string)=>{
+    
+   const result = await prisma.project.findUnique({
+        where:{
+            id
+        },
+        include:{
+            author:true
+        }
+    })
+    return result
+}
+
 const updateProject = async(id:string,project:IUpdateProject) =>{
     
     const result = await prisma.project.update({
@@ -75,6 +99,8 @@ const deleteProject = async(id:string) =>{
 
 export const ProjectServices = {
     createProject,
+    getAllProject,
+    ProjectDetails,
     updateProject,
     deleteProject
 }

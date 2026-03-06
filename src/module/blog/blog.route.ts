@@ -6,6 +6,8 @@ const router = express.Router()
 
 
 router.post("/",BlogController.createBlog)
+router.get("/",BlogController.getAllBlog)
+router.get("/:id",BlogController.blogDetails)
 router.patch("/:id",BlogController.updateBlog)
 router.delete("/:id",BlogController.deleteBlog)
 

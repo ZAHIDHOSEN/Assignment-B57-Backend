@@ -15,6 +15,32 @@ const createProject = async(req:Request,res:Response) =>{
     }
 }
 
+
+const getAllProject = async(req:Request,res:Response)=>{
+    try {
+        const result = await ProjectServices.getAllProject()
+        res.status(200).json(result)
+        
+    } catch (error) {
+        console.log(error)
+        res.status(500).send(error)
+    }
+}
+
+
+
+const ProjectDetails = async(req:Request,res:Response)=>{
+    try {
+        const id = (req.params.id)as string
+
+        const result = await ProjectServices.ProjectDetails(id)
+        
+    } catch (error) {
+        console.log(error)
+        res.status(500).send(error)
+    }
+}
+
 const updateProject = async(req:Request,res:Response) =>{
     try {
        const id = (req.params.id) as string
@@ -45,6 +71,8 @@ const deleteProject = async(req:Request,res:Response) =>{
 
 export const ProjectController = {
     createProject,
+    getAllProject,
+    ProjectDetails,
     updateProject,
     deleteProject
 }
