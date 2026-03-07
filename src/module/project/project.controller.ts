@@ -34,7 +34,7 @@ const ProjectDetails = async(req:Request,res:Response)=>{
         const id = (req.params.id)as string
 
         const result = await ProjectServices.ProjectDetails(id)
-        
+        res.status(200).json(result)
     } catch (error) {
         console.log(error)
         res.status(500).send(error)

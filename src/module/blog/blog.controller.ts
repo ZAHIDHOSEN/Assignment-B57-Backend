@@ -1,5 +1,4 @@
 import { Request, Response } from "express"
-import { prisma } from "../../../lib/prisma"
 import { BlogServices } from "./blog.servics"
 
 
@@ -9,7 +8,8 @@ const createBlog = async(req:Request,res:Response) =>{
     try {
 
        const payload = req.body 
-       const result = await BlogServices.createBlog(payload)
+       const userId = req.user?.id as string
+       const result = await BlogServices.createBlog(payload,userId)
        res.status(200).json(result)
 
         

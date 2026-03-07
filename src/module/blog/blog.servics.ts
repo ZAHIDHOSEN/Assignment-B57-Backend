@@ -18,13 +18,13 @@ interface IUpdateBlog {
 }
 
 
-const createBlog = async(payload:ICreateBlog) =>{
+const createBlog = async(payload:ICreateBlog,userId:string) =>{
      const result = await prisma.blog.create({
         data:{
             title:payload.title,
             slug:payload.slug,
             content:payload.content,
-           authorId: payload.authorId,
+            authorId: userId
         },
         include:{
             author:true,
