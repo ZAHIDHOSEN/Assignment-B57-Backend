@@ -3,13 +3,14 @@ import cors from "cors"
 import { AuthRouter } from "./module/auth/auth.route"
 import { BlogRoute } from "./module/blog/blog.route"
 import { ProjectRoute } from "./module/project/project.route"
-
+import cookieParser from "cookie-parser"
 
 
 const app = express()
 
 
 app.use(express.json())
+app.use(cookieParser())
 app.use(
     cors({
         origin:"http://localhost:3000",

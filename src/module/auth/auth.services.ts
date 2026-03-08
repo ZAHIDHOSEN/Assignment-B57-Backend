@@ -33,6 +33,7 @@ const loginAdmin = async(payload:LoginPayload)=>{
         email:user.email
     }
     const accessToken = createAccessToken(jwtPayload)
+    
     const refreshToken = createRefreshToken(jwtPayload)
     return {
         user,
@@ -41,6 +42,12 @@ const loginAdmin = async(payload:LoginPayload)=>{
     }
 
 }
+
+const logoutAdmin = async () => {
+  return {
+    message: "User logged out successfully",
+  };
+};
 
 
 const getNewAccessToken = async(refreshToken:string)=>{
@@ -65,8 +72,20 @@ const getNewAccessToken = async(refreshToken:string)=>{
 }
 
 
+const getMe = async(userId:string)=>{
+   
+  const user = await prisma.user.findUnique({
+    where:{id:userId}
+})
+
+return user
+
+}
+
 
  export const AuthServices = {
     loginAdmin,
-    getNewAccessToken
+    getNewAccessToken,
+    logoutAdmin,
+    getMe
 }

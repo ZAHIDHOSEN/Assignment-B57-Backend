@@ -7,6 +7,7 @@ interface ICreateBlog {
   title: string;
   slug: string;
   content: string;
+  thumbnail: string
   authorId: string;
 }
 
@@ -14,6 +15,7 @@ interface ICreateBlog {
 interface IUpdateBlog {
   title?: string;
   slug?: string;
+  thumbnail?: string
   content?: string;
 }
 
@@ -24,6 +26,7 @@ const createBlog = async(payload:ICreateBlog,userId:string) =>{
             title:payload.title,
             slug:payload.slug,
             content:payload.content,
+            thumbnail:payload.thumbnail,
             authorId: userId
         },
         include:{
@@ -31,7 +34,7 @@ const createBlog = async(payload:ICreateBlog,userId:string) =>{
         }
      })
 
-
+     
      return result
 }
 
