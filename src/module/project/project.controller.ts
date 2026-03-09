@@ -6,7 +6,9 @@ import { ProjectServices } from "./project.services";
 const createProject = async(req:Request,res:Response) =>{
     try {
         const project = req.body;
-        const result = await ProjectServices.createProject(project)
+        console.log(project)
+        const userId = req.user?.id as string
+        const result = await ProjectServices.createProject(project,userId)
         res.status(200).json(result)
     } catch (error) {
         console.log(error)

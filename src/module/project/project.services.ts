@@ -24,7 +24,7 @@ export interface IUpdateProject {
 }
 
 
-const createProject = async(project:ICreateProject) =>{
+const createProject = async(project:ICreateProject,userId:string) =>{
     
     const result = await prisma.project.create({
         data:{
@@ -35,7 +35,7 @@ const createProject = async(project:ICreateProject) =>{
             repoUrl: project.repoUrl,
             thumbnail: project.thumbnail,
             features: project.features || [],
-            authorId: project.authorId
+            authorId: userId
         },
         include:{
             author:true
