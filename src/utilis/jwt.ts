@@ -17,7 +17,7 @@ export const createRefreshToken = (payload: object) => {
   return jwt.sign(
     payload,
     process.env.JWT_REFRESH_SECRET!,
-    { expiresIn: process.env.JWT_REFRESH_EXPIRES as jwt.SignOptions["expiresIn"]}
+    { expiresIn: (process.env.JWT_REFRESH_EXPIRES!) as jwt.SignOptions["expiresIn"]}
   )
 }
 
@@ -25,3 +25,7 @@ export const createRefreshToken = (payload: object) => {
 export const verifyRefreshToken = (token: string) => {
   return jwt.verify(token, process.env.JWT_REFRESH_SECRET!)
 }
+
+
+
+

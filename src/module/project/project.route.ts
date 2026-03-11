@@ -1,6 +1,6 @@
 import express from "express"
-import { ProjectController } from "./project.controller"
-import { authMiddleware } from "../../utilis/authMidddleware"
+import { ProjectController } from "./project.controller.js"
+import { authMiddleware } from "../../utilis/authMidddleware.js"
 
 
 const router = express.Router()

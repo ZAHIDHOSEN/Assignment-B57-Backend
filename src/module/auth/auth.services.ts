@@ -1,7 +1,7 @@
-import { prisma } from "../../../lib/prisma"
+import { prisma } from "../../../lib/prisma.js"
 import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken"
-import { createAccessToken, createRefreshToken, verifyRefreshToken } from "../../utilis/jwt"
+import { createAccessToken, createRefreshToken, verifyRefreshToken } from "../../utilis/jwt.js"
 
 interface LoginPayload {
     email: string

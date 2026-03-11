@@ -1,20 +1,32 @@
 import express from "express"
 import cors from "cors"
-import { AuthRouter } from "./module/auth/auth.route"
-import { BlogRoute } from "./module/blog/blog.route"
-import { ProjectRoute } from "./module/project/project.route"
+import { AuthRouter } from "./module/auth/auth.route.js"
+import { BlogRoute } from "./module/blog/blog.route.js"
+import { ProjectRoute } from "./module/project/project.route.js"
 import cookieParser from "cookie-parser"
 
 
+
+
 const app = express()
+// app.set("trust proxy",1)
 
 
 app.use(express.json())
 app.use(cookieParser())
 app.use(
     cors({
-        origin:"http://localhost:3000",
+        origin:[
+            "http://localhost:3000",
+            "https://my-portfolio-lovat-beta-19.vercel.app",
+           
+
+
+        ],
+       
         credentials:true,
+       
+   
     })
 )
 

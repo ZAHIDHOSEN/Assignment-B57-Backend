@@ -1,5 +1,5 @@
 import { Request, Response } from "express"
-import { BlogServices } from "./blog.servics"
+import { BlogServices } from "./blog.servics.js"
 
 
 

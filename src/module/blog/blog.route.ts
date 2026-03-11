@@ -1,6 +1,6 @@
 import express from "express"
-import { BlogController } from "./blog.controller"
-import { authMiddleware } from "../../utilis/authMidddleware"
+import { BlogController } from "./blog.controller.js"
+import { authMiddleware } from "../../utilis/authMidddleware.js"
 
 
 

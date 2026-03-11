@@ -1,6 +1,6 @@
 import { Request, Response } from "express"
-import { AuthServices } from "./auth.services"
-import {prisma} from "../../../lib/prisma"
+import { AuthServices } from "./auth.services.js"
+import {prisma} from "../../../lib/prisma.js"
 
 
 const loginAdmin = async(req:Request,res:Response)=>{
@@ -9,8 +9,9 @@ const loginAdmin = async(req:Request,res:Response)=>{
        const result = await AuthServices.loginAdmin(payload)
        res.cookie("accessToken", result.accessToken, {
        httpOnly: true,
-       secure: false,
-       sameSite:"lax"
+       secure: true,
+       sameSite:"none",
+      
        })
        res.status(200).json(result)
         
@@ -26,8 +27,9 @@ const logoutAdmin = async(req:Request,res:Response)=>{
 
      res.clearCookie("accessToken",{
        httpOnly:true,
-       secure:false,  //true in production
-       sameSite:"lax"
+       secure:true,  //true in production
+       sameSite:"none",
+   
      })
   } catch (error) {
     console.log(error)
